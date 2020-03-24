@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bowling</title>
+</head>
+<body>
+<script>
+    let frames = 1;
+    let left = 10;
+    let points = 0;
+    let name = prompt("What is your name?");
+    let pins;
+    while (frames <= 10) {
+        alert  ("frame " + frames);
+        pins = prompt("You roll the bowling ball, how many pins did it hit?");
+        pins = Number(pins);
+        if (pins === 10){
+            alert("STRIKE!!!");
+            points = (points + 20);
+            document.write ("STRIKE IN FRAME " + frames + ", +20 POINTS!!!         ");
+            document.writeln("</br>");
+        }
+        else if (pins>10){
+            alert ("Liar. -10 points!!");
+            points = (points - 10);
+            document.write ("Cheated in frame " + frames + ", -10 points.         " );
+            document.writeln("</br>");
+        }
+        else {
+            left = (left - pins);
+            points = (points + pins);
+            pins = prompt("There are " + left + " pins left, how many dif you hit?");
+            pins = Number(pins);
+            if (pins === left){
+                alert ("Spare!");
+                points = (points + pins + 5);
+                pins = 0;
+                left = 10;
+                document.write ("Spare in frame " + frames + ", +15 points!         ");
+                document.writeln("</br>");
+            }
+            else if (pins>left){
+                alert ("Liar. -10 points!!");
+                points = (points - 10);
+                document.write ("Cheated in frame " + frames + ", -10 points.       ");
+                document.writeln("</br>");
+            }
+            else{
+                points = (points + pins);
+                left = 10;
+                pins = 0;
+                document.write ("frame " + frames + " points is " + pins + ".      ");
+                document.writeln("</br>");
+            }
+        }
+        frames = (frames + 1);
+    }
+    document.write("Congrats " + name + " you got " + points + " points!!")
+</script>
+
+
+</body>
+</html>
